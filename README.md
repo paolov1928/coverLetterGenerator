@@ -4,6 +4,8 @@ Generates a unique new cover letter using the openAI api.
 
 ## Files needed
 
+Requires a .env with your OPENAI_API_KEY
+
 Requires three docs an existing cover letter, resume and job specification
 
 ./localFiles/existingCoverLetter.txt'
