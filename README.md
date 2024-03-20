@@ -1,6 +1,6 @@
 # coverLetterGenerator
 
-Generates a unique new cover letter.
+Generates a unique new cover letter using the openAI api.
 
 ## Files needed
 
