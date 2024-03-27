@@ -1,4 +1,5 @@
 import fs from 'fs';
+import PDFDocument from 'pdfkit';
 import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 import { TextLoader } from 'langchain/document_loaders/fs/text';
 import { openai } from './openai.js';
@@ -62,6 +63,20 @@ const generateCoverLetterText = async (
   return response.choices[0].message.content;
 };
 
+const saveContentToPDF = (filePath, content) => {
+  if (fs.existsSync(filePath + '.pdf')) {
+    fs.unlinkSync(filePath + '.pdf');
+    console.log('Existing PDF file deleted:', filePath + '.pdf');
+  }
+
+  const doc = new PDFDocument();
+  doc.pipe(fs.createWriteStream(filePath + '.pdf'));
+  doc.text(content);
+  doc.end();
+
+  console.log(`New cover letter written to ${filePath}.pdf`);
+};
+
 const saveCoverLetterToFile = (content, filePath) => {
   if (fs.existsSync(filePath)) {
     fs.unlinkSync(filePath);
@@ -75,6 +90,8 @@ const saveCoverLetterToFile = (content, filePath) => {
       console.log(`New cover letter written to ${filePath}`);
     }
   });
+
+  saveContentToPDF(filePath, content);
 };
 
 const main = async () => {
