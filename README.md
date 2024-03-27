@@ -14,6 +14,23 @@ Requires three docs an existing cover letter, resume and job specification
 
 These files are included in the gitignore so as not to leak these to the repo.
 
+## Index
+
+Run:
+$ node index.js $
+
+This will generate a new cover letter based on the three files above.
+Both a txt and a pdf file are generated.
+
+## RegenPDF
+
+Used if manually tweaking the output from openAI. I.e. after a manual change to newCoverLetter.txt
+
+Run:
+$ node regenPDF.js $
+
+This will regenerate the pdf file based on the ./localFiles/newCoverLetter.txt file.
+
 ## FrontEnd Masters
 
 This project was inspired by the openAI course on Front End Masters. Great course would recommend!
