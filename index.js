@@ -1,17 +1,14 @@
 import fs from 'fs';
 import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
-import { TextLoader } from 'langchain/document_loaders/fs/text';
 import { openai } from './openai.js';
-
-const COVER_LETTER_PATH = './localFiles/existingCoverLetter.txt';
-const RESUME_PATH = './localFiles/resume.pdf';
-const JOB_SPEC_PATH = './localFiles/jobspec.txt';
-const NEW_COVER_LETTER_PATH = './localFiles/newCoverLetter.txt';
-
-const loadText = async (filePath) => {
-  const loader = new TextLoader(filePath);
-  return await loader.load();
-};
+import {
+  NEW_COVER_LETTER_PATH,
+  COVER_LETTER_PATH,
+  RESUME_PATH,
+  JOB_SPEC_PATH,
+  loadText,
+  saveContentToPDF,
+} from './utils.js';
 
 const loadPDF = async (filePath) => {
   const loader = new PDFLoader(filePath);
@@ -75,6 +72,8 @@ const saveCoverLetterToFile = (content, filePath) => {
       console.log(`New cover letter written to ${filePath}`);
     }
   });
+
+  saveContentToPDF(filePath, content);
 };
 
 const main = async () => {
