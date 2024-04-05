@@ -1,14 +1,15 @@
 import fs from 'fs';
 import PDFDocument from 'pdfkit';
 import { TextLoader } from 'langchain/document_loaders/fs/text';
-
-export const COVER_LETTER_PATH = './localFiles/existingCoverLetter.txt';
-export const RESUME_PATH = './localFiles/resume.pdf';
-export const JOB_SPEC_PATH = './localFiles/jobspec.txt';
-export const NEW_COVER_LETTER_PATH = './localFiles/newCoverLetter.txt';
+import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 
 export const loadText = async (filePath) => {
   const loader = new TextLoader(filePath);
+  return await loader.load();
+};
+
+export const loadPDF = async (filePath) => {
+  const loader = new PDFLoader(filePath);
   return await loader.load();
 };
 

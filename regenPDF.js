@@ -1,4 +1,5 @@
-import { NEW_COVER_LETTER_PATH, loadText, saveContentToPDF } from './utils.js';
+import { NEW_COVER_LETTER_PATH } from './utilities/filePaths.js';
+import { loadText, saveContentToPDF } from './utilities/general.js';
 
 const main = async () => {
   try {
