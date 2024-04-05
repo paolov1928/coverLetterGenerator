@@ -22,6 +22,13 @@ $ node index.js $
 This will generate a new cover letter based on the three files above.
 Both a txt and a pdf file are generated.
 
+## Chat
+
+Run:
+$ node chat.js $
+
+This will generate a chat where the AI will answer based on the three files above.
+
 ## RegenPDF
 
 Used if manually tweaking the output from openAI. I.e. after a manual change to newCoverLetter.txt
